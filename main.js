@@ -12,15 +12,25 @@ You can assume that the 2nd number passed in will always be greater than the fir
 Note: This problem should account for negative number input
 */
 
-function sumOfOdds(){
+function sumOfOdds(num1, num2) {
+    let sum = 0;
+    for (let i = num1; i <= num2; i++) {
+        if (i % 2 > 0) {
 
+            sum += i;
+        }
+    }
+    return sum;
 }
 
 /* console.logs to test */
 console.log("sumOfOdds");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
-
+console.log(sumOfOdds(100, 20));
+console.log(sumOfOdds(-1, -6));
+console.log(sumOfOdds(10, 2000));
+console.log(sumOfOdds(-50, -200));
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
 /*
@@ -30,15 +40,24 @@ For exmaple arraySubtract([7,9],[2,6]) should return [5,3]
 You can assume the arrays that are being input are of the same length
 */
 
-function arraySubtract(){
-
+function arraySubtract(array1, array2) {
+    let result = [];
+    let result2 = 0;
+    for (let i = 0; i < array1.length; i++) {
+        result2 = array1[i] - array2[i];
+        result.push(result2);
+        result2 = 0;
+    }
+    return result;
 }
-
 /* console.logs to test */
 console.log("arraySubtract");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
+console.log(arraySubtract([35], [6]));
+console.log(arraySubtract([6, 36, 1], [16, 13, 3]));
+console.log(arraySubtract([63, 6, 12], [1, 3, 31]));
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
 
@@ -49,15 +68,17 @@ Add the second string to the end of the array
 Return the modified array
 */
 
-function surroundArray(){
-
+function surroundArray(first, second, third) {
+    first.unshift(second);
+    first.push(third);
+    return first;
 }
 
 /* console.logs to test */
 console.log("surroundArray");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
-
+console.log(surroundArray(["eggs", "bacon", "cheese",700,7,70,17], "toast"));
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
 
@@ -67,15 +88,31 @@ If there is nothing in the array, return an empty string ('')
 You can assume that no two strings will have the same length in the array
 */
 
-function longestString(){
-    
+function longestString(array)
+{
+    if(array.length == 0)
+    {
+         return '';
+    }
+    let longestarray = array[0];
+    for(let i = 0; i < array.length; i++)
+    {
+        if(array[i].length > longestarray.length)
+        {
+            longestarray = array[i];
+        }
+    }
+    return longestarray;
 }
-
 /* console.logs to test */
 console.log("longestString");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
-
+console.log(longestString(['bird','animal','elephant','freedom']));
+console.log(longestString(['you','tree','santa','spree']));
+console.log(longestString([]));
+console.log(longestString(['i']));
+console.log(longestString(['']));
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
 
@@ -102,16 +139,17 @@ Write a function divisibleBy4And7 that takes in a number and returns true if it 
 If it is not, return false.
 */
 
-function divisibleBy4And7(){
-
+function divisibleBy4And7(num){
+    if(num % 4 === 0 && num % 7 === 0){
+        return true
+    }else {
+        return false
+    }
 }
-
+let num = 28
+console.log(divisibleBy4And7(num))
 /* console.logs to test */
-console.log("divisibleBy4And7");
-console.log("////////////////////////////////////////////////////////////////////////////\n");
-//Add console.logs here to test!  Feel free to format this section however you like
 
-console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
 
 /*
@@ -120,15 +158,22 @@ return true if the string contains both an exclamation point (!) AND a question 
 Return false if otherwise
 */
 
-function exclamationAndQuestion(){
+function exclamationAndQuestion(str) {
+    if(str.includes("!") && str.includes("?")){
+        return true;
+    } else{
+    return false
+    }
+} 
     
-}
+   
 
 /* console.logs to test */
 console.log("exclamationAndQuestion");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
-
+console.log(exclamationAndQuestion("I love my life! do you love yours?"));
+console.log(exclamationAndQuestion("I want to go to the beach!"));
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
 
@@ -138,15 +183,23 @@ No need to add the count of A and B together.  Again, we want an array with the 
 Your function should account for both cases (upper and lower) of each letter.
 */
 
-function countAB(){
-
+function countAB(str) {
+    const letters = (str + "").toUpperCase().split("");
+    let count = [0, 0];
+    for (let i in letters) {
+        if (letters[i] == 'A') {
+            count[0]++;
+        } else if (letters[i] == 'B') {
+            count[1]++;
+        }
+    }
+    return count;
 }
-
 /* console.logs to test */
 console.log("countAB");
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
-
+console.log(countAB("applebabblecabblesabble"));
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
 
 
@@ -186,4 +239,3 @@ console.log("///////////////////////////////////////////////////////////////////
 //Add console.logs here to test!  Feel free to format this section however you like
 
 console.log("\n////////////////////////////////////////////////////////////////////////////\n");
-
